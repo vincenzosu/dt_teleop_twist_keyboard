@@ -132,7 +132,7 @@ if __name__=="__main__":
             wcs.header.stamp = rospy.Time.now()
             wcs.header.frame_id = '_frame'
             pub.publish(wcs)
-			print("published, connection check")
+            print("published, connection check")
             if pub.get_num_connections() > 0:
                 pub.publish(wcs)
                 print("published!")
