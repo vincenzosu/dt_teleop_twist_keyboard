@@ -121,8 +121,8 @@ if __name__=="__main__":
             twist.linear.x = x*speed; twist.linear.y = y*speed; twist.linear.z = z*speed;
             twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
             
-            vel_left = twist.linear.x * cos(twist.angular.z)
-            vel_right = twist.linear.x * sin(twist.angular.z)
+            vel_left = twist.linear.x * math.cos(twist.angular.z)
+            vel_right = twist.linear.x * math.sin(twist.angular.z)
             
             pub.publish(np.array([vel_left, vel_right]))
 
