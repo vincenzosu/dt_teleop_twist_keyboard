@@ -84,7 +84,7 @@ if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 #$ rostopic pub -r 100 /default/wheels_driver_node/wheels_cmd duckietown_msgs/WheelsCmdStamped '{vel_left:  1.0, vel_right: 1.0}'
 
-    pub = rospy.Publisher('WheelsCmdStamped', WheelsCmdStamped, queue_size = 10)
+    pub = rospy.Publisher('/default/wheels_driver_node/wheels_cmd', WheelsCmdStamped, queue_size = 10)
     rospy.init_node('dt_teleop_twist_keyboard')
     # r = rospy.Rate(10)
 
