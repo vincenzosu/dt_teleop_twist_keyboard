@@ -131,7 +131,8 @@ if __name__=="__main__":
             wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
             wcs.header.stamp = rospy.Time.now()
             wcs.header.frame_id = '_frame'
-			
+            pub.publish(wcs)
+			print("published, connection check")
             if pub.get_num_connections() > 0:
                 pub.publish(wcs)
                 print("published!")
