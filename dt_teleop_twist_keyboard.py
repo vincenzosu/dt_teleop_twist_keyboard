@@ -83,7 +83,7 @@ def vels(speed,turn):
 if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 #$ rostopic pub -r 100 /default/wheels_driver_node/wheels_cmd duckietown_msgs/WheelsCmdStamped '{vel_left:  1.0, vel_right: 1.0}'
-    pub = rospy.Publisher('duckietown_msgs/WheelsCmdStamped', WheelsCmdStamped, queue_size = 10)
+    pub = rospy.Publisher('duckietown_msgs/WheelsCmdStamped', duckietown_msgs/WheelsCmdStamped, queue_size = 10)
     rospy.init_node('dt_teleop_twist_keyboard')
 
     speed = rospy.get_param("~speed", 0.5)
