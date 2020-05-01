@@ -128,8 +128,10 @@ if __name__=="__main__":
             
             wcs.vel_left = twist.linear.x * math.cos(twist.angular.z)
             wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
+            wcs.header.stamp = rospy.Time.now()
+            wcs.header.frame_id = '_frame'
 
-            pub.publish( WheelsCmdStamped(wcs.vel_left, wcs.vel_right))
+            pub.publish(wcs)
 
     except Exception as e:
         print(e)
