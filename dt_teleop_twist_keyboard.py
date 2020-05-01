@@ -124,9 +124,10 @@ if __name__=="__main__":
             twist.linear.x = x*speed; twist.linear.y = y*speed; twist.linear.z = z*speed;
             twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
             wcs = WheelsCmdStamped()
+            
             wcs.vel_left = twist.linear.x * math.cos(twist.angular.z)
             wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
-            
+            print(wcs.vel_left)
             pub.publish(wcs)
 
     except Exception as e:
