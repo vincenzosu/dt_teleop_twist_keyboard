@@ -127,8 +127,9 @@ if __name__=="__main__":
             twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
             wcs = WheelsCmdStamped()
             
-            wcs.vel_left = twist.linear.x * math.cos(twist.angular.z)
-            wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
+            wcs.vel_left = (twist.linear.x - twist.angular.z)/2
+            wcs.vel_right = (twist.linear.x + twist.angular.z)/2
+            
             wcs.header.stamp = rospy.Time.now()
             wcs.header.frame_id = '_frame'
             pub.publish(wcs)
