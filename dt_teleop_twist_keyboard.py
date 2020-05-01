@@ -6,7 +6,7 @@ import roslib; roslib.load_manifest('dt_teleop_twist_keyboard')
 import rospy
 
 from geometry_msgs.msg import Twist
-from duckietown_msgs.msg import WheelCmdStamped
+from duckietown_msgs.msg import WheelsCmdStamped
 
 import sys, select, termios, tty
 import numpy as np
