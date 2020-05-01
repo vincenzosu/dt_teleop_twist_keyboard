@@ -8,6 +8,7 @@ import rospy
 from geometry_msgs.msg import Twist
 
 import sys, select, termios, tty
+import numpy as np
 
 msg = """
 Reading from the keyboard  and Publishing to Twist!
@@ -123,7 +124,7 @@ if __name__=="__main__":
             vel_left = twist.linear.x * cos(twist.angular.z)
             vel_right = twist.linear.x * sin(twist.angular.z)
             
-            pub.publish(vel_left, vel_right)
+            pub.publish(np.array([vel_left, vel_right]))
 
     except Exception as e:
         print(e)
