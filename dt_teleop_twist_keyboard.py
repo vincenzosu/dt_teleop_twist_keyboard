@@ -123,7 +123,7 @@ if __name__=="__main__":
             twist = Twist()
             twist.linear.x = x*speed; twist.linear.y = y*speed; twist.linear.z = z*speed;
             twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
-            wcs = WheelsCmqStamped()
+            wcs = WheelsCmdStamped()
             wcs.vel_left = twist.linear.x * math.cos(twist.angular.z)
             wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
             
@@ -139,7 +139,7 @@ if __name__=="__main__":
         vel_left = 0.0
         vel_right = 0.0
         
-        wcs = WheelsCmqStamped()
+        wcs = WheelsCmdStamped()
         wcs.vel_left = 0.0
         wcs.vel_right = 0.0
             
