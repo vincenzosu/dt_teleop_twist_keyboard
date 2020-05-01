@@ -84,7 +84,7 @@ if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 #$ rostopic pub -r 100 /default/wheels_driver_node/wheels_cmd duckietown_msgs/WheelsCmdStamped '{vel_left:  1.0, vel_right: 1.0}'
 
-    pub = rospy.Publisher('WheelsCmdStamped', duckietown_msgs.msg.WheelsCmdStamped, queue_size = 10)
+    pub = rospy.Publisher('WheelsCmdStamped', WheelsCmdStamped, queue_size = 10)
     rospy.init_node('dt_teleop_twist_keyboard')
 
     speed = rospy.get_param("~speed", 0.5)
@@ -129,7 +129,7 @@ if __name__=="__main__":
             wcs.vel_left = twist.linear.x * math.cos(twist.angular.z)
             wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
 
-            pub.publish(wcs)
+            pub.publish( WheelsCmdStamped(wcs.vel_left, wcs.vel_right))
 
     except Exception as e:
         print(e)
