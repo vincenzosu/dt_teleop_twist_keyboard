@@ -9,6 +9,8 @@ from geometry_msgs.msg import Twist
 
 import sys, select, termios, tty
 import numpy as np
+import math
+
 
 msg = """
 Reading from the keyboard  and Publishing to Twist!
