@@ -86,6 +86,7 @@ if __name__=="__main__":
 
     pub = rospy.Publisher('WheelsCmdStamped', WheelsCmdStamped, queue_size = 10)
     rospy.init_node('dt_teleop_twist_keyboard')
+    r = rospy.Rate(10)
 
     speed = rospy.get_param("~speed", 0.5)
     turn = rospy.get_param("~turn", 1.0)
