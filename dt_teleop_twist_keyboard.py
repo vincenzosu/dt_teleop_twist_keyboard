@@ -127,8 +127,8 @@ if __name__=="__main__":
             twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
             wcs = WheelsCmdStamped()
             
-            wcs.vel_left = (twist.linear.x - twist.angular.z/2)
-            wcs.vel_right = (twist.linear.x + twist.angular.z/2)
+            wcs.vel_left = 0.5*(twist.linear.x - twist.angular.z/2)
+            wcs.vel_right = 0.5*(twist.linear.x + twist.angular.z/2)
             
             wcs.header.stamp = rospy.Time.now()
             wcs.header.frame_id = '_frame'
