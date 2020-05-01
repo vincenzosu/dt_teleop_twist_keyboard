@@ -86,7 +86,7 @@ if __name__=="__main__":
 
     pub = rospy.Publisher('WheelsCmdStamped', WheelsCmdStamped, queue_size = 10)
     rospy.init_node('dt_teleop_twist_keyboard')
-    r = rospy.Rate(10)
+    # r = rospy.Rate(10)
 
     speed = rospy.get_param("~speed", 0.5)
     turn = rospy.get_param("~turn", 1.0)
@@ -131,8 +131,10 @@ if __name__=="__main__":
             wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
             wcs.header.stamp = rospy.Time.now()
             wcs.header.frame_id = '_frame'
-
-            pub.publish(wcs)
+			
+			if (pub.get_num_connections() > 0)
+                pub.publish(wcs)
+                print("published!")
 
     except Exception as e:
         print(e)
