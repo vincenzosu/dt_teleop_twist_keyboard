@@ -123,11 +123,11 @@ if __name__=="__main__":
             twist = Twist()
             twist.linear.x = x*speed; twist.linear.y = y*speed; twist.linear.z = z*speed;
             twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = th*turn
+            wcs = WheelsCmqStamped()
+            wcs.vel_left = twist.linear.x * math.cos(twist.angular.z)
+            wcs.vel_right = twist.linear.x * math.sin(twist.angular.z)
             
-            vel_left = twist.linear.x * math.cos(twist.angular.z)
-            vel_right = twist.linear.x * math.sin(twist.angular.z)
-            
-            pub.publish(np.array([vel_left, vel_right]))
+            pub.publish(wcs)
 
     except Exception as e:
         print(e)
@@ -138,8 +138,13 @@ if __name__=="__main__":
         twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
         vel_left = 0.0
         vel_right = 0.0
+        
+        wcs = WheelsCmqStamped()
+        wcs.vel_left = 0.0
+        wcs.vel_right = 0.0
             
-        pub.publish(vel_left, vel_right)
+        pub.publish(wcs)            
+        #pub.publish(vel_left, vel_right)
 #        pub.publish(twist)
 
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
